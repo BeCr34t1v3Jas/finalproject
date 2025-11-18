@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact – Jasmin Mikolay</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --accent: #6c63ff;
+        --accent-soft: #f5f1ff;
+        --text-main: #1f1f1f;
+        --text-muted: #777;
+        --border: #e5e5e5;
+        --bg: #ffffff;
+      }
+
+      body {
+        font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: #fff;
+        color: var(--text-main);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ===== Navbar (same style on all pages) ===== */
+      .navbar {
+        background: #ffffff;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem; /* WICHTIG: gleich wie container */
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .nav-logo {
+        height: 36px;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        text-decoration: none;
+        color: #333;
+        transition: 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: #6c63ff;
+      }
+
+      /* MAIN LAYOUT */
+      .page-wrapper {
+        max-width: 1100px;
+        margin: 40px auto 0;
+        padding: 0 40px 60px;
+      }
+
+      .page-title {
+        font-family: "Playfair Display", serif;
+        font-size: 2.6rem;
+        margin-bottom: 32px;
+      }
+
+      .contact-flex {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+        gap: 40px;
+        align-items: flex-start;
+      }
+
+      /* FORM CARD */
+      .card {
+        background: var(--bg);
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        padding: 24px 24px 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      }
+
+      .field-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+      }
+
+      .input,
+      .textarea {
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid #d6d6f3;
+        padding: 10px 12px;
+        font-family: inherit;
+        font-size: 0.9rem;
+        outline: none;
+        background: #fbfbff;
+      }
+
+      .input:focus,
+      .textarea:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.12);
+        background: #ffffff;
+      }
+
+      .textarea {
+        resize: vertical;
+        min-height: 110px;
+      }
+
+      .field-group {
+        margin-bottom: 14px;
+      }
+
+      .btn-primary {
+        border: none;
+        border-radius: 4px;
+        padding: 9px 26px;
+        background: var(--accent);
+        color: #fff;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.08s ease, box-shadow 0.08s ease,
+          background 0.12s ease;
+      }
+
+      .btn-primary:hover {
+        background: #5b53f8;
+        box-shadow: 0 10px 20px rgba(108, 99, 255, 0.25);
+        transform: translateY(-1px);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+
+      /* CONTACT INFO */
+      .contact-info-title {
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+
+      .contact-item-label {
+        font-weight: 500;
+        margin-bottom: 2px;
+      }
+
+      .contact-item-link {
+        color: var(--accent);
+        font-size: 0.85rem;
+        word-break: break-word;
+      }
+
+      /* WORK INQUIRY BANNER */
+      .work-banner {
+        margin-top: 80px;
+        background: #faf6ff;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        padding: 28px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .work-banner-left-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+      }
+
+      .work-banner-left-sub {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      .work-banner .btn-primary {
+        padding-inline: 30px;
+      }
+
+      /* FOOTER */
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 0.85rem;
+      }
+
+      .footer-email {
+        margin-bottom: 18px;
+        font-weight: 500;
+      }
+
+      .footer-socials {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 16px;
+        font-size: 1rem;
+      }
+
+      .footer-socials a {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #dedede;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+      }
+
+      .footer-note {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        margin-bottom: 40px;
+      }
+
+      .footer-note a {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 850px) {
+        .nav {
+          padding: 18px 20px;
+        }
+
+        .page-wrapper {
+          padding: 0 20px 40px;
+        }
+
+        .contact-flex {
+          grid-template-columns: 1fr;
+        }
+
+        .work-banner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      .footer-socials img.social-icon {
+        width: 28px;
+        height: 28px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid #dedede;
+        padding: 5px;
+        background: white;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .footer-socials img.social-icon:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Navigation ===== -->
+    <header class="navbar">
+      <div class="nav-container">
+        <div class="nav-left">
+          <img src="images/shecodesicon.png" alt="Logo" class="nav-logo" />
+        </div>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-wrapper">
+      <h1 class="page-title">Let’s get in touch!</h1>
+
+      <section class="contact-flex">
+        <!-- LEFT: FORM -->
+        <form class="card" action="#" method="post">
+          <div class="field-group">
+            <label class="field-label" for="email">Your email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="input"
+              placeholder="you@example.com"
+              required
+            />
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="message">Your message:</label>
+            <textarea
+              id="message"
+              name="message"
+              class="textarea"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">Send</button>
+        </form>
+
+        <!-- RIGHT: CONTACT INFO -->
+        <aside>
+          <h2 class="contact-info-title">Contact details</h2>
+          <div class="contact-list">
+            <div>
+              <div class="contact-item-label">Email</div>
+              <a href="mailto:hello@toyou.com" class="contact-item-link">
+                hello@toyou.com
+              </a>
+            </div>
+
+            <div>
+              <div class="contact-item-label">Twitter</div>
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                class="contact-item-link"
+              >
+                @twitter
+              </a>
+            </div>
+
+            <div>
+              <div class="contact-item-label">Instagram</div>
+              <a
+                href="https://instagram.com/"
+                target="_blank"
+                class="contact-item-link"
+              >
+                @instagram
+              </a>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- WORK INQUIRY BANNER -->
+      <section class="work-banner">
+        <div>
+          <div class="work-banner-left-title">Work Inquiry</div>
+          <div class="work-banner-left-sub">Let’s work together</div>
+        </div>
+
+        <a href="mailto:hello@jasminmikolay.com" class="btn-primary"
+          >Contact me</a
+        >
+      </section>
+
+      <!-- FOOTER -->
+      <div class="footer-socials">
+  <a href="https://github.com" target="_blank" aria-label="GitHub">
+    <img src="images/githublogo.png" alt="GitHub logo">
+  </a>
+
+  <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+    <img src="images/insta.jpg" alt="Instagram logo">
+  </a>
+
+  <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+    <img src="images/FB.png" alt="Twitter logo">
+  </a>
+</div>
+
+        <div class="footer-note">
+          ✨ This site was coded by Jasmin Mikolay &amp; is
+          <a href="#">open-sourced</a>.
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
